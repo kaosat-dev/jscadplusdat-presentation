@@ -23,5 +23,5 @@
   const coolPart = require('dat://user.hashbase.io/designLib')
   ```
 
-- a possible specialized [Hashbase](https://hashbase.io/) like instance to simplify reseeding ?
-- collaborative editing ? (multiwriter hyperdrive ?)
+- specialized [Hashbase](https://hashbase.io/) like instance to simplify reseeding ?
+- collaborative editing  (multiwriter hyperdrive)
