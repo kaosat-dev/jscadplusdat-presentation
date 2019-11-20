@@ -11,8 +11,8 @@
 
 ### Examples
 
-https://jscad.xyz/?uri=dat://gahoma.hashbase.io
-https://jscad.xyz/?uri=dat://kiwikee.hashbase.io/cad/kiwikee
+[gahoma.hashbase.io](https://jscad.xyz/?uri=dat://gahoma.hashbase.io)
+[kiwikee.hashbase.io](https://jscad.xyz/?uri=dat://kiwikee.hashbase.io/cad/kiwikee)
 
 
 ### Future

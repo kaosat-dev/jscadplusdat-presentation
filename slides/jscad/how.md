@@ -2,7 +2,7 @@
 
 ### Your toolbox
 
-#### 2d & 3d shapes
+#### 2d & 3d shapes <!-- .slide: data-background-image="./img/all-shapes.png" -->
 
 - rectangle
 - circle
@@ -12,11 +12,12 @@
 - cylinder
 - etc
 
-#### Transformations
+#### Transformations <!-- .slide: data-background-image="./img/transforms.png" -->
 
 - translate (move)
 - rotate()
 - scale()
+- etc
 
 #### Glue, cut, carve aka: Boolean operations <!-- .slide: data-background-image="./img/Csg_tree.png" -->
 
