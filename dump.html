@@ -75,3 +75,29 @@
 - one person coding, other getting the updates 'live'
 - small video of this
 - live example
+
+https://beakerbrowser.com/docs/apis/dat
+JSCAD + DAT a match made in decentralized heaven ?
+
+
+```javascript
+const { circle, square } = require('@jscad/csg/api').primitives2d
+const { cylinder, sphere, cube, torus } = require('@jscad/csg/api').primitives3d
+const { translate, scale } = require('@jscad/csg/api').transformations
+
+function main () {
+  return [
+    // 2d
+    translate([0, 10], circle()),
+    translate([0, 5], square({ size: [10, 3] })),
+    // 3d
+    translate([0, -10], sphere()),
+    translate([0, -5], cylinder()),
+    cube(),
+    scale(0.5, torus())
+  ]
+}
+
+module.exports = { main }
+
+```

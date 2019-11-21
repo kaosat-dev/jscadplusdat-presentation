@@ -4,6 +4,8 @@
 
 ## Special Thanks
 
+The lovely organizers at Wizard Amigos !
+
 A HUUGE thanks to all the members of the JSCAD community, past, present and future!
 https://jscad.xyz/forum/
 

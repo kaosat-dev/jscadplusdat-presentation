@@ -1,4 +1,4 @@
-# JSCAD + DAT = :heart:
+# JSCAD + DAT = ![](./img/heart.png "heart")
 
 ### Live sync <!-- .slide: data-background-video="./img/live-update3.mp4" -->
 
@@ -11,9 +11,8 @@
 
 ### Examples
 
-[gahoma.hashbase.io](https://jscad.xyz/?uri=dat://gahoma.hashbase.io)
-[kiwikee.hashbase.io](https://jscad.xyz/?uri=dat://kiwikee.hashbase.io/cad/kiwikee)
-
+- [gahoma.hashbase.io](https://jscad.xyz/?uri=dat://gahoma.hashbase.io)
+- [kiwikee.hashbase.io](https://jscad.xyz/?uri=dat://kiwikee.hashbase.io/cad/kiwikee)
 
 ### Future
 

@@ -1,6 +1,8 @@
 # JSCAD + DAT
-## a match made in decentralized heaven ?
+## CAD here, CAD there, CAD everywhere !
 
 By [Mark Moissette]()
 
-https://openjscad.org
+github: kaosat-dev / twitter: Mark_kaosat_dev
+
+https://openjscad.org https://jscad.xyz

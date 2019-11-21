@@ -16,11 +16,39 @@ A Parametric 2d/3d code based modeling tool ! <!-- .element: class="fragment" --
 
 #### simply functions and modules
 
-![alt text](./img/all-shapes.png "things")<!-- .element: class="fragment" -->
-![alt text](./img/all-shapes-code.png "things")<!-- .element: class="fragment" -->
+#### turn this
+![alt text](./img/all-shapes-code.png "things")
 
-![alt text](./img/transforms.png "things")<!-- .element: class="fragment" -->
-![alt text](./img/transforms-code.png "things")<!-- .element: class="fragment" -->
+#### into this
 
+![alt text](./img/all-shapes.png "things")
 
-### Parametric: your design can change based on user provided parameters
+### Parametric <!-- .slide: data-background-image="./img/holeradius1.png" -->
+
+your design can change based on user provided parameters
+
+(hole Radius is 1)
+
+```javascript
+   function makePart (holeRadius = 1) => {
+        return  difference(
+        cube({ size: [10, 2, 1], center: true }),
+        sphere({ r: holeRadius, center: true })
+        )
+    }
+```
+
+### Parametric <!-- .slide: data-background-image="./img/holeradius3.png" -->
+
+your design can change based on user provided parameters
+
+(hole Radius is 3)
+
+```javascript
+   function makePart (holeRadius = 3) => {
+        return  difference(
+        cube({ size: [10, 2, 1], center: true }),
+        sphere({ r: holeRadius, center: true })
+        )
+    }
+```
