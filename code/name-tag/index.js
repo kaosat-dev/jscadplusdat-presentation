@@ -12,21 +12,21 @@
 
 function getParameterDefinitions () {
   return [
-    {name: 'nameText', caption: 'Text:', type: 'text', default: 'JSCAD'},
-    {name: 'textColor', caption: 'Text color:', type: 'color', default: rgbToHex([0, 0, 0])},
-    {name: 'bodyColor', caption: 'Body color:', type: 'color', default: rgbToHex([0.89, 1, 0])},
-    {name: 'textThickness', caption: 'Text thickness:', type: 'float', default: 2},
-    {name: 'fontweight', caption: 'Fontweight:', type: 'float', default: 5},
-    {name: 'fontwidth', caption: 'Fontwidth [%]:', type: 'float', default: 100},
-    {name: 'thickness', caption: 'Thickness:', type: 'float', default: 2},
-    {name: 'width', caption: 'Width:', type: 'float', default: 9},
-    {name: 'cornerRadius', caption: 'Corner radius:', type: 'float', default: 4},
-    {name: 'resolution', caption: 'Resolution', type: 'int', default: 24}
+    { name: 'nameText', caption: 'Text:', type: 'text', default: 'JSCAD' },
+    { name: 'textColor', caption: 'Text color:', type: 'color', default: rgbToHex([0, 0, 0]) },
+    { name: 'bodyColor', caption: 'Body color:', type: 'color', default: rgbToHex([0.89, 1, 0]) },
+    { name: 'textThickness', caption: 'Text thickness:', type: 'float', default: 2 },
+    { name: 'fontweight', caption: 'Fontweight:', type: 'float', default: 5 },
+    { name: 'fontwidth', caption: 'Fontwidth [%]:', type: 'float', default: 100 },
+    { name: 'thickness', caption: 'Thickness:', type: 'float', default: 2 },
+    { name: 'width', caption: 'Width:', type: 'float', default: 9 },
+    { name: 'cornerRadius', caption: 'Corner radius:', type: 'float', default: 4 },
+    { name: 'resolution', caption: 'Resolution', type: 'int', default: 24 }
   ]
 }
 
 function main (params) {
-  const {nameText, thickness, width, cornerRadius, resolution} = params
+  const { nameText, thickness, width, cornerRadius, resolution } = params
   // const bodyColor = [0.89, 1, 0]// [0.3, 0.3, 0.3] //[1, 0.3, 0]
   // const textColor = [0.3, 0.3, 0.3]// [0.89, 1, 0]//[0.2, 0.2, 0.2]
   let length = 0
@@ -34,32 +34,32 @@ function main (params) {
   const bodyColor = hexToRgb(params.bodyColor)
 
   // Text
-  const mainText = measuredText(Object.assign({}, params, {textColor}), nameText)
+  const mainText = measuredText(Object.assign({}, params, { textColor }), nameText)
   const tagText = mainText.text
   length = mainText.length
 
-  const bottomText = measuredText(Object.assign({}, params, {textColor, fontwidth: 65, fontweight: 2}), 'hannover.js')
+  const bottomText = measuredText(Object.assign({}, params, { textColor, fontwidth: 65, fontweight: 2 }), 'hannover.js')
 
   // body
-  const tagCorner = circle({r: cornerRadius, fn: resolution, center: true})
+  const tagCorner = circle({ r: cornerRadius, fn: resolution, center: true })
 
   const tagCorner1 = translate([length - cornerRadius, width - cornerRadius], tagCorner)
   const tagCorner2 = translate([length - cornerRadius, -width + cornerRadius], tagCorner)
   const tagCorner3 = translate([-length + cornerRadius, width - cornerRadius], tagCorner)
   const tagCorner4 = translate([-length + cornerRadius, -width + cornerRadius], tagCorner)
   const bodyShape = hull([tagCorner1, tagCorner2, tagCorner3, tagCorner4])
-  const bodyMain = linear_extrude({height: thickness}, bodyShape)
+  const bodyMain = linear_extrude({ height: thickness }, bodyShape)
 
   // Cutout
   const holeShape = hull(
-    translate([0, -2.5], circle({r: 2.5, center: true})),
-    translate([0, 2.5], circle({r: 2.5, center: true}))
+    translate([0, -2.5], circle({ r: 2.5, center: true })),
+    translate([0, 2.5], circle({ r: 2.5, center: true }))
   )
-  const attachHole = translate([-length + 5, 0, 0], linear_extrude({height: thickness}, holeShape))
+  const attachHole = translate([-length + 5, 0, 0], linear_extrude({ height: thickness }, holeShape))
 
   // gear
   const decoGear = translate([length / 1.5, 0, thickness / 2],
-    gear({centerholeradius: 0, circularPitch: 10, thickness, numTeeth: 10}))
+    gear({ centerholeradius: 0, circularPitch: 10, thickness, numTeeth: 10 }))
   const body = union([bodyMain, decoGear])
 
   return union([
@@ -74,12 +74,12 @@ function main (params) {
 }
 
 function measuredText (params, string) {
-  const {textThickness, textColor, fontweight, fontwidth, thickness} = params
+  const { textThickness, textColor, fontweight, fontwidth, thickness } = params
   const adjustedFontWidth = fontwidth / 100 * 0.33
   let length = 0
-  const textPolyLines = vector_text(0, 0, string)   // l contains a list of polylines to be drawn
-  const text3d = textPolyLines.map((pl) => {          // pl = polyline (not closed)
-    return rectangular_extrude(pl, {w: fontweight, h: textThickness}) // extrude it to 3D
+  const textPolyLines = vector_text(0, 0, string) // l contains a list of polylines to be drawn
+  const text3d = textPolyLines.map((pl) => { // pl = polyline (not closed)
+    return rectangular_extrude(pl, { w: fontweight, h: textThickness }) // extrude it to 3D
   })
 
   let text = scale([adjustedFontWidth, 0.33, 0.5], union(text3d))
@@ -87,7 +87,7 @@ function measuredText (params, string) {
   text = translate([-length + 11, -3, 0], text)
   text = color(textColor, text)
 
-  return {text, length}
+  return { text, length }
 }
 
 function hexToRgb (hex) {
@@ -114,7 +114,7 @@ function rgbToHex (r, g, b) {
 }
 
 function gear (params) {
-  params = Object.assign({}, {numTeeth: 10, circularPitch: 5, pressureAngle: 20, clearance: 0, thickness: 5, centerholeradius: 2}, params)
+  params = Object.assign({}, { numTeeth: 10, circularPitch: 5, pressureAngle: 20, clearance: 0, thickness: 5, centerholeradius: 2 }, params)
   let gear = involuteGear(
     params.numTeeth,
     params.circularPitch,
@@ -123,7 +123,7 @@ function gear (params) {
     params.thickness
   )
   if (params.centerholeradius > 0) {
-    let centerhole = CSG.cylinder({start: [0, 0, -params.thickness], end: [0, 0, params.thickness], radius: params.centerholeradius, resolution: 16})
+    let centerhole = CSG.cylinder({ start: [0, 0, -params.thickness], end: [0, 0, params.thickness], radius: params.centerholeradius, resolution: 16 })
     gear = gear.subtract(centerhole)
   }
   return gear
@@ -181,7 +181,7 @@ function involuteGear (numTeeth, circularPitch, pressureAngle, clearance, thickn
 
   // create the polygon and extrude into 3D:
   const foo = CAG.fromPoints(points)
-  let tooth3d = foo.extrude({offset: [0, 0, thickness]})
+  let tooth3d = foo.extrude({ offset: [0, 0, thickness] })
 
   let allteeth = new CSG()
   for (let j = 0; j < numTeeth; j++) {
@@ -201,7 +201,7 @@ function involuteGear (numTeeth, circularPitch, pressureAngle, clearance, thickn
   }
 
   // create the polygon and extrude into 3D:
-  let rootcircle = CAG.fromPoints(points).extrude({offset: [0, 0, thickness]})
+  let rootcircle = CAG.fromPoints(points).extrude({ offset: [0, 0, thickness] })
 
   let result = rootcircle.union(allteeth)
 
