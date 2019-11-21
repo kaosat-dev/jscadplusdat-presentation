@@ -4,10 +4,10 @@
 
 ## Special Thanks
 
-The lovely organizers at Wizard Amigos !
-
-A HUUGE thanks to all the members of the JSCAD community, past, present and future!
-https://jscad.xyz/forum/
+- The lovely organizers at Wizard Amigos !
+- The amazing Dat ! https://dat.foundation/
+- And Beaker ! https://beakerbrowser.com/
+- all the members of the JSCAD community, past, present and future! https://jscad.xyz/forum/
 
 Also & particularly:
 - the authors & contributors of OpenSCAD
