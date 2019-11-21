@@ -6,11 +6,15 @@ const { rotate, translate, scale, mirror, contract, expand } = require('@jscad/c
 const { union, difference, intersection } = require('@jscad/csg/api').booleanOps
 
 const getParameterDefinitions = () => {
-  return []
+  return [
+    { name: 'radius', caption: 'Radius:', type: 'float', default: 4 },
+    { name: 'length', caption: 'Length:', type: 'float', default: 4 },
+    { name: 'spokes', caption: 'Spokes:', type: 'int', default: 4 }
+  ]
 }
 
-const main = () => {
-  return cube()
+const main = (params) => {
+  return cube({ size: [1, params.length, 20] })
 }
 
 module.exports = { main, getParameterDefinitions }
